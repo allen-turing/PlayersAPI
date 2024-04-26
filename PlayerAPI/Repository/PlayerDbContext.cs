@@ -19,13 +19,5 @@ namespace PlayerAPI.Repository
 
 #endif
 		}
-		//protected override void OnModelCreating(ModelBuilder modelBuilder)
-		//{
-		//	if (modelBuilder is not null)
-		//	{
-		//		modelBuilder.ApplyConfigurationsFromAssembly(typeof(PlayerDbContext).Assembly);
-		//	}
-
-		//}
 	}
 }
