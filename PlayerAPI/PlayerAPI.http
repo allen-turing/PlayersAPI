@@ -1,6 +1,13 @@
 @PlayerAPI_HostAddress = https://localhost:44384
-
-GET {{PlayerAPI_HostAddress}}/weatherforecast/
+@playerId = 1
+### GetAll Player By Id
+GET {{PlayerAPI_HostAddress}}/api/players/{{playerId}}
 Accept: application/json
 
-###
+### Get All Players
+GET {{PlayerAPI_HostAddress}}/api/players
+Accept: application/json
+
+### Get Players as stream
+GET {{PlayerAPI_HostAddress}}/api/players/stream
+Accept: application/json
