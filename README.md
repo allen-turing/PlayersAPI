@@ -19,7 +19,12 @@ Connect to the instance using MySql workbench
 
 ### REST API in ASP Dotnet Core to get information about NBA Players
 
-Run the asp dotnet core application using visual studio as IIS Profile or command line using `dotnet run` or run it in docker container
+Run the asp dotnet core application using visual studio as IIS Profile or 
+command line by
+1. Move inside directory PlayerAPI using `cd ./PlayerAPI`
+2. run `dotnet run --launch-profile "NBAPlayerApi"` it will run at localhost 7118 as this port is configured inside Properties/launchSetting.json
+
+or run it in docker container
 use the localhost:port of the server running for the api call, eg web api is running on localhost:44384 in IIS Profile using visual studio
 
 Add the MySql connection string in appsetting.json for local setup or use key vault if needed or secret.json file
