@@ -29,22 +29,14 @@ namespace PlayerAPI.Controllers
 			return Ok(player);
 		}
 
-		//[HttpGet("stream")]
-		//public async Task<EmptyResult> GetPlayerStreamAsync()
-		//{
-		//	Response.ContentType = "text/plain";
-		//	StreamWriter sw;
-		//	await using ((sw = new StreamWriter(Response.Body)))
-		//	{
-		//		await foreach (var player in _playerDbContext.Players.AsAsyncEnumerable())
-		//		{
-		//			await sw.WriteLineAsync(player.ToString());
-		//			await sw.FlushAsync();
-		//			yield return player;
-		//		}
-		//	}
-		//	return new EmptyResult();
-		//}
+		[HttpGet("stream")]
+		public async IAsyncEnumerable<Player> GetPlayerStreamAsync()
+		{
+			await foreach (var player in _playerDbContext.Players.AsAsyncEnumerable())
+			{
+				yield return player;
+			}
+		}
 
 		[HttpGet]
 		[ProducesResponseType(typeof(IEnumerable<Player>), StatusCodes.Status200OK)]
