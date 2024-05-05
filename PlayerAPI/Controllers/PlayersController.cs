@@ -30,9 +30,9 @@ namespace PlayerAPI.Controllers
 		}
 
 		[HttpGet("stream")]
-		public async IAsyncEnumerable<Player> GetPlayerStreamAsync()
+		public async IAsyncEnumerable<Player> GetPlayerStreamAsync([FromQuery] int limit, [FromQuery] int offSet)
 		{
-			await foreach (var player in _playerDbContext.Players.AsAsyncEnumerable())
+			await foreach (var player in _playerDbContext.Players.Skip(offSet).Take(limit).AsAsyncEnumerable())
 			{
 				yield return player;
 			}
@@ -40,9 +40,9 @@ namespace PlayerAPI.Controllers
 
 		[HttpGet]
 		[ProducesResponseType(typeof(IEnumerable<Player>), StatusCodes.Status200OK)]
-		public async Task<IActionResult> GetPlayerAsync()
+		public async Task<IActionResult> GetPlayerAsync([FromQuery] int limit, [FromQuery] int offSet)
 		{
-			var player = await _playerDbContext.Players.ToListAsync();
+			var player = await _playerDbContext.Players.Skip(offSet).Take(limit).ToListAsync();
 
 			return Ok(player);
 		}
